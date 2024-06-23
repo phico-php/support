@@ -31,6 +31,7 @@ class Str
     }
     public function splitOnCaps(string $str): string
     {
+        $str = preg_replace('/\s{2,}/', ' ', trim($str));
         $parts = preg_split('/(?=[A-Z])/', $str, -1, PREG_SPLIT_NO_EMPTY);
         return join(' ', $parts);
     }
@@ -40,7 +41,7 @@ class Str
     }
     public function toKebabCase(string $str): string
     {
-        return strtolower($this->toTrainCase($str));
+        return strtolower($this->toTrainCase(strtolower($str)));
     }
     public function toPascalCase(string $str): string
     {

@@ -24,40 +24,41 @@ $object = str()->fromJson($json, $flags = null);
 
 ```php
 $clean = str()->sanitise($input);
+// older alias str()->sanitize($input);
 ```
 
 #### split a string on capitals
 
 ```php
-$str = str()->sanitise('ACapitalisedString);
+$str = str()->splitOnCaps('ACapitalisedString);
 // A Capitalised String
 ```
 
 #### convert a string to camel case
 
 ```php
-$str = str()->sanitise('This is Camel case);
+$str = str()->toCamelCase('This is Camel case);
 // thisIsCamelCase
 ```
 
 #### convert a string to kebab case
 
 ```php
-$str = str()->sanitise('This is Kebab case);
+$str = str()->toKebabCase('This is Kebab case);
 // this-is-kebab-case
 ```
 
 #### convert a string to pascal case
 
 ```php
-$str = str()->sanitise('This is pascal case);
+$str = str()->toPascalCase('This is pascal case);
 // This Is Pascal Case
 ```
 
 #### convert a string to train case
 
 ```php
-$str = str()->sanitise('This is train case);
+$str = str()->toTrainCase('This is train case);
 // This-Is-Train-Case
 ```
 
