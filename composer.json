@@ -5,7 +5,7 @@
   "license": "BSD-3-Clause",
   "autoload": {
     "psr-4": {
-      "Phico\\Support\\": "src/"
+      "Phico\\": "src/"
     },
     "files": [
       "src/functions.php"

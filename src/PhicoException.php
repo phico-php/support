@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace Phico;
 
-use Exception;
 
-
-class PhicoException extends Exception
+class PhicoException extends \Exception
 {
     public function toArray(): array
     {
