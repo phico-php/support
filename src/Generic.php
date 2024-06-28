@@ -51,8 +51,12 @@ class Generic
         }
         return $this->__isset($prop);
     }
-    public function get(string $prop, mixed $default = null): mixed
+    public function get(array|string $prop, mixed $default = null): mixed
     {
+        if (is_array($prop)) {
+            return $this->getArray($prop, $default);
+        }
+
         $method = sprintf('get%s', str()->toCamelCase($prop));
         if (method_exists($this, $method)) {
             return $this->$method($prop, $default);
@@ -62,6 +66,15 @@ class Generic
             $prop = $this->normalise($prop);
         }
         return ($this->__isset($prop)) ? $this->data[$prop] : $default;
+    }
+    protected function getArray(array $props, mixed $default = []): array
+    {
+        $out = [];
+        foreach ($props as $prop) {
+            $out[$prop] = $this->get($prop);
+        }
+
+        return (empty($out)) ? $default : $out;
     }
     public function set(string $prop, mixed $value): mixed
     {
