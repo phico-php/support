@@ -94,8 +94,9 @@ class Generic
         return $this;
     }
 
-    private function normalise(string $name): string
+    protected function normalise(string $name): string
     {
         return str_replace('-', '_', strtolower($name));
     }
+
 }
