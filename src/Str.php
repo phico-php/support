@@ -49,6 +49,13 @@ class Str
         $str = ucwords($str);
         return str_replace(' ', '', $str);
     }
+    public function toSnakeCase(string $str): string
+    {
+        $str = str_replace(['_', '-'], ' ', $this->splitOnCaps($str));
+        $str = strtolower($str);
+
+        return str_replace(' ', '_', $str);
+    }
     public function toTrainCase(string $str): string
     {
         $str = str_replace(['_', '-'], ' ', $this->splitOnCaps($str));
