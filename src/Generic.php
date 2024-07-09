@@ -76,7 +76,7 @@ class Generic
 
         return array_filter($out);
     }
-    public function set(string $prop, mixed $value): mixed
+    public function set(string $prop, mixed $value): self
     {
         if ($this->readonly) {
             throw new \BadMethodCallException(sprintf("'Cannot set property '%s' on class '%s' as it is readonly", $prop, __CLASS__));
@@ -85,12 +85,15 @@ class Generic
         $method = sprintf('set%s', str()->toCamelCase($prop));
         if (method_exists($this, $method)) {
             $this->$method($value);
+            return $this;
         }
 
         if ($this->normalise) {
             $prop = $this->normalise($prop);
         }
+
         $this->data[$prop] = $value;
+
         return $this;
     }
 
