@@ -67,7 +67,7 @@ class Generic
         }
         return ($this->__isset($prop)) ? $this->data[$prop] : $default;
     }
-    protected function getMany(array $props): array
+    public function getMany(array $props): array
     {
         $out = [];
         foreach ($props as $prop) {
