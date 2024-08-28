@@ -96,6 +96,10 @@ class Generic
 
         return $this;
     }
+    public function toArray(): array
+    {
+        return $this->data;
+    }
 
     protected function normalise(string $name): string
     {
