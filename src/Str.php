@@ -45,7 +45,7 @@ class Str
     }
     public function toPascalCase(string $str): string
     {
-        $str = $this->splitOnCaps($str);
+        $str = str_replace(['_', '-'], ' ', $this->splitOnCaps($str));
         $str = ucwords($str);
         return str_replace(' ', '', $str);
     }
