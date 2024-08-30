@@ -57,7 +57,7 @@ class Generic
             return $this->getMany($prop);
         }
 
-        $method = sprintf('get%s', str()->toCamelCase($prop));
+        $method = sprintf('get%s', str()->toPascalCase($prop));
         if (method_exists($this, $method)) {
             return $this->$method($prop, $default);
         }
@@ -82,7 +82,7 @@ class Generic
             throw new \BadMethodCallException(sprintf("'Cannot set property '%s' on class '%s' as it is readonly", $prop, __CLASS__));
         }
 
-        $method = sprintf('set%s', str()->toCamelCase($prop));
+        $method = sprintf('set%s', str()->toPascalCase($prop));
         if (method_exists($this, $method)) {
             $this->$method($value);
             return $this;
