@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Phico;
 
-use Phico\PhicoException;
-
-use Throwable;
+use JsonException;
 
 /**
  * Provides string helper methods
@@ -22,14 +20,9 @@ class Str
      */
     public function fromJson(array|object $data, int $flags = 0): string
     {
-        try {
-            $flags = JSON_THROW_ON_ERROR + $flags;
-            return json_encode($data, $flags, 32);
-        } catch (Throwable $th) {
-            $e = new PhicoException("Failed to encode object to json", 1010, $th);
-            logger()->error($e->toString());
-            throw $e;
-        }
+        $flags = JSON_THROW_ON_ERROR + $flags;
+
+        return json_encode($data, $flags, 32);
     }
     /**
      * Sanitises a string by converting special characters to HTML entities.
@@ -134,10 +127,6 @@ class Str
             return ($as_array) ? (object) [] : [];
         }
 
-        try {
-            return json_decode($str, $as_array, 512, JSON_THROW_ON_ERROR);
-        } catch (Throwable $th) {
-            throw new PhicoException("Failed to decode invalid json", 1010, $th);
-        }
+        return json_decode($str, $as_array, 512, JSON_THROW_ON_ERROR);
     }
 }
