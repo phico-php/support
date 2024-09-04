@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace Phico;
 
 
-// holds a list of Generic instances
-class Generics implements \Iterator
+/**
+ * Manages a collection of Capsule instances
+ */
+class Collection implements \Iterator
 {
     private $position = 0;
     private array $items = [];
@@ -22,7 +24,7 @@ class Generics implements \Iterator
         return $this->items;
     }
 
-    public function add(Generic $item): self
+    public function add(Capsule $item): self
     {
         $this->items[] = $item;
         return $this;
@@ -73,7 +75,7 @@ class Generics implements \Iterator
     #[\ReturnTypeWillChange]
     public function current()
     {
-        return $this->item[$this->position];
+        return $this->items[$this->position];
     }
 
     #[\ReturnTypeWillChange]
@@ -89,6 +91,6 @@ class Generics implements \Iterator
 
     public function valid(): bool
     {
-        return isset($this->item[$this->position]);
+        return isset($this->items[$this->position]);
     }
 }
