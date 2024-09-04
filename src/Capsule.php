@@ -91,8 +91,8 @@ class Capsule
      * Throws an exception if called with an array and the default return value is not an array,
      * calling this method with $props as an array must always return an array
      *
-     * @param string $prop  The property name to fetch
-     * @param mixed $value  The value to return if the property is not found
+     * @param array|string $prop The property names or name to get
+     * @param mixed $default The value to return if the property is not found
      * @throws InvalidArgumentException When called with an array and a default return value
      * @return mixed
      */

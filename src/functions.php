@@ -15,7 +15,6 @@ if (!function_exists('str')) {
 if (!function_exists('dd')) {
     /**
      * Stops execution and dumps any passed arguments
-     * @param array $
      * @return never
      */
     function dd()
