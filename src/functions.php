@@ -3,12 +3,21 @@
 declare(strict_types=1);
 
 if (!function_exists('str')) {
+    /**
+     * Returns a Phico\Str helper instance
+     * @return Phico\Str
+     */
     function str(): \Phico\Str
     {
         return new \Phico\Str();
     }
 }
 if (!function_exists('dd')) {
+    /**
+     * Stops execution and dumps any passed arguments
+     * @param array $
+     * @return never
+     */
     function dd()
     {
         do {
