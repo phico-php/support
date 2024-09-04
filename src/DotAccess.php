@@ -6,7 +6,7 @@ namespace Phico;
 
 
 /**
- * Provides dotted array accessors
+ * Provides dotted array property access
  */
 trait DotAccess
 {
