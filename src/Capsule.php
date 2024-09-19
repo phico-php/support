@@ -122,11 +122,20 @@ class Capsule implements JsonSerializable
         return ($this->__isset($prop)) ? $this->data[$prop] : $default;
     }
     /**
-     * Returns true if the names propery has been set
+     * Returns true if the named property is set (alias of isset())
      * @param string $prop
      * @return bool
      */
     public function has(string $prop): bool
+    {
+        return $this->__isset($this->normalise($prop));
+    }
+    /**
+     * Returns true if the named property is set (alias of has())
+     * @param string $prop
+     * @return bool
+     */
+    public function isset(string $prop): bool
     {
         return $this->__isset($this->normalise($prop));
     }
