@@ -12,14 +12,13 @@ trait DotAccess
 {
     /**
      * Returns true if key is found in the array
-     * @param string $items The name of the array to search
+     * @param array $items The array to search
      * @param string $key The name of the key to find
      * @return bool
      */
-    protected function dotHas(string $items, string $key): bool
+    protected function dotHas(array $items, string $key): bool
     {
         $parts = explode('.', $key);
-        $items = $this->$items;
 
         foreach ($parts as $part) {
             if (isset($items[$part])) {
@@ -33,15 +32,14 @@ trait DotAccess
     }
     /**
      * Returns a value by key
-     * @param string $items The name of the array to search
+     * @param array $items The array to search
      * @param string $key The name of the key to find
      * @param mixed $default The value to return if not found
      * @return mixed
      */
-    protected function dotGet(string $items, string $key, mixed $default = null): mixed
+    protected function dotGet(array $items, string $key, mixed $default = null): mixed
     {
         $parts = explode('.', $key);
-        $items = $this->$items;
 
         foreach ($parts as $part) {
             if (isset($items[$part])) {
@@ -55,15 +53,14 @@ trait DotAccess
     }
     /**
      * Sets a value by key
-     * @param string $items The name of the array to search
+     * @param array $items The reference to the array to search
      * @param string $key The name of the key to set
      * @param mixed $value The value to set
      * @return void
      */
-    protected function dotSet(string $items, string $key, mixed $value): void
+    protected function dotSet(array &$items, string $key, mixed $value): void
     {
         $parts = explode('.', $key);
-        $items = &$this->$items;
 
         foreach ($parts as $part) {
             if (!isset($items[$part])) {
@@ -76,14 +73,13 @@ trait DotAccess
     }
     /**
      * Removes the value named key
-     * @param string $items The name of the array to search
+     * @param array $items The reference to the array to search
      * @param string $key The name of the key to unset
      * @return void
      */
-    protected function dotUnset(string $items, string $key): void
+    protected function dotUnset(array &$items, string $key): void
     {
         $parts = explode('.', $key);
-        $items = &$this->$items;
 
         foreach ($parts as $i => $part) {
             if (isset($items[$part])) {
