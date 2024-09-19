@@ -6,13 +6,14 @@ namespace Phico;
 
 use BadMethodCallException;
 use InvalidArgumentException;
+use JsonSerializable;
 
 
 /**
  * Encapsulates properties and data and provides useful accessor methods
  * @TODO use DotAccess? Use dotNormalise to explode by . then normalise
  */
-class Capsule
+class Capsule implements JsonSerializable
 {
     /**
      * When true any set() methods will throw exceptions
@@ -128,6 +129,14 @@ class Capsule
     public function has(string $prop): bool
     {
         return $this->__isset($this->normalise($prop));
+    }
+    /**
+     * Supports json serialisation
+     * @return array<string,mixed>
+     */
+    public function jsonSerialize(): array
+    {
+        return $this->all();
     }
     /**
      * Returns a filtered keyed array of all set property name => values returning only the names in $props
