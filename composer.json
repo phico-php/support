@@ -1,37 +1,40 @@
 {
-  "name": "phico/support",
-  "description": "Support classes and functions for Phico",
-  "type": "library",
-  "license": "BSD-3-Clause",
-  "autoload": {
-    "psr-4": {
-      "Phico\\": "src/"
+    "name": "phico/support",
+    "description": "Support classes and functions for Phico",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "autoload": {
+        "psr-4": {
+            "Phico\\": "src/"
+        },
+        "files": [
+            "src/functions.php"
+        ]
     },
-    "files": [
-      "src/functions.php"
-    ]
-  },
-  "authors": [
-    {
-      "name": "indgy",
-      "email": "me@indgy.uk"
+    "authors": [
+        {
+            "name": "indgy",
+            "email": "me@indgy.uk"
+        }
+    ],
+    "minimum-stability": "stable",
+    "config": {
+        "allow-plugins": {
+            "phpstan/extension-installer": true,
+            "pestphp/pest-plugin": true
+        },
+        "sort-packages": true
+    },
+    "require": {
+        "php": "^8.0"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "*",
+        "pestphp/pest": "^2.34",
+        "friendsofphp/php-cs-fixer": "dev-master",
+        "squizlabs/php_codesniffer": "4.0.x-dev"
+    },
+    "scripts": {
+        "analyse": "vendor/bin/phpstan  analyse src/"
     }
-  ],
-  "minimum-stability": "stable",
-  "config": {
-    "allow-plugins": {
-      "phpstan/extension-installer": true,
-      "pestphp/pest-plugin": true
-    }
-  },
-  "require": {
-    "php": "^8.0"
-  },
-  "require-dev": {
-    "phpstan/phpstan": "^1.11",
-    "pestphp/pest": "^2.34"
-  },
-  "scripts": {
-    "analyse": "vendor/bin/phpstan  analyse src/"
-  }
 }
